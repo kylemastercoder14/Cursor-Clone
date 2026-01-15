@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
-import { Providers } from '@/components/Providers';
+import { Providers } from "@/components/Providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import "./globals.css";
@@ -30,7 +30,7 @@ export default function RootLayout({
     <ClerkProvider appearance={{ theme: dark }}>
       <html lang="en" suppressHydrationWarning>
         <body className={`${inter.variable} ${plexMono.variable} antialiased`}>
-            <Providers>{children}</Providers>
+          <Providers>{children}</Providers>
         </body>
       </html>
     </ClerkProvider>
