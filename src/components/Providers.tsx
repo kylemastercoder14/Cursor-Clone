@@ -3,10 +3,7 @@
 import { ReactNode } from "react";
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
   useAuth,
-  UserButton,
 } from "@clerk/nextjs";
 import {
   Authenticated,
@@ -19,6 +16,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 import { UnauthenticatedView } from "@/features/auth/components/UnauthenticatedView";
 import { AuthLoadingView } from "@/features/auth/components/AuthLoadingView";
+import { Toaster } from '@/components/ui/sonner';
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -29,12 +27,10 @@ export const Providers = ({ children }: { children: ReactNode }) => {
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          forcedTheme="dark" //TODO: Remove this later
           enableSystem
           disableTransitionOnChange
         >
           <Authenticated>
-            <UserButton />
             {children}
           </Authenticated>
           <Unauthenticated>
@@ -45,6 +41,7 @@ export const Providers = ({ children }: { children: ReactNode }) => {
           </AuthLoading>
         </ThemeProvider>
       </ConvexProviderWithClerk>
+      <Toaster closeButton position='top-center' />
     </ClerkProvider>
   );
 };
